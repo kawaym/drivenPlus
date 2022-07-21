@@ -62,6 +62,11 @@ button {
 	}
 }
 
+a {
+	font-style: none;
+	text-decoration: none;
+}
+
 input {
 	border: none;
 }

@@ -17,6 +17,7 @@ function Thematizer({ children }) {
     },
     misc: {
       white: "#FFFFFF",
+      grey: "#7E7E7E",
     },
   };
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;

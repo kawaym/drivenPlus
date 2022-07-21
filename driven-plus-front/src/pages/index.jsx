@@ -1,4 +1,6 @@
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-export { SignIn, SignUp };
+import PlanChoice from "./PlanChoice";
+
+export { SignIn, SignUp, PlanChoice };
