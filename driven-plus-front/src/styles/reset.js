@@ -55,10 +55,15 @@ table {
 }
 
 button {
-    background-color: transparent;
-    :hover {
-        cursor: pointer;
-    }
+	border: none;
+  background-color: transparent;
+	:hover {
+			cursor: pointer;
+	}
+}
+
+input {
+	border: none;
 }
 `;
 
