@@ -21,7 +21,12 @@ function SignIn() {
     setSubmitting(true);
     try {
       const data = await authApi.signIn(body);
-      login(body);
+      const userData = {
+        token: data.token,
+        name: data.name,
+        membership: data.membership,
+      };
+      login(userData);
       if (!data.membership) {
         navigate("/subscriptions");
         return;

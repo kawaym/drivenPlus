@@ -31,9 +31,9 @@ const Form = styled.form`
   width: 80%;
 
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
   gap: 15px;
 `;

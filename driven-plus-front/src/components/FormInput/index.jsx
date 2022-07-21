@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-function FormInput({ name, type, placeholder, handleChange, value, disabled }) {
+function FormInput({
+  name,
+  type,
+  placeholder,
+  handleChange,
+  value,
+  disabled,
+  size = "full",
+  align = null,
+}) {
   return (
     <StyledInput
       id={name}
@@ -10,18 +19,23 @@ function FormInput({ name, type, placeholder, handleChange, value, disabled }) {
       onChange={handleChange}
       value={value}
       disabled={disabled}
+      size={size}
+      align={align}
     />
   );
 }
 
 const StyledInput = styled.input`
-  width: 100%;
+  width: ${(props) => (props.size === "full" ? "100%" : "47%")};
   height: 52px;
 
   background: #ffffff;
   border-radius: 8px;
 
   padding-left: 15px;
+
+  align-self: ${(props) =>
+    props.align === "start" ? "flex-start" : "flex-end"};
 
   ::placeholder {
     font-family: ${(props) => props.theme.font.typography};

@@ -7,4 +7,11 @@ async function listPlans(token) {
   return response.data;
 }
 
-export { listPlans };
+async function listPlanInfo(id, token) {
+  const config = createConfig(token);
+
+  const response = await app.get(`/subscriptions/memberships/${id}`, config);
+  return response.data;
+}
+
+export { listPlans, listPlanInfo };
