@@ -24,6 +24,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Pages.SignIn />} exact />
+              <Route path="/sign-up" element={<Pages.SignUp />} exact />
             </Routes>
           </BrowserRouter>
         </Providers.AuthProvider>

@@ -5,4 +5,9 @@ async function signIn(body) {
   return response.data;
 }
 
-export { signIn };
+async function signUp(body) {
+  const response = await app.post("/auth/sign-up", body);
+  return response.data;
+}
+
+export { signIn, signUp };
