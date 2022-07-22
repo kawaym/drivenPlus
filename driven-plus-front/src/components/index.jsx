@@ -7,6 +7,7 @@ import PlanLogo from "./PlanLogo";
 import Header from "./Header";
 import BackButton from "./BackButton";
 import PageTitle from "./PageTitle";
+import SubscriptionModal from "./SubscriptionModal";
 
 export {
   Background,
@@ -18,4 +19,5 @@ export {
   Header,
   BackButton,
   PageTitle,
+  SubscriptionModal,
 };

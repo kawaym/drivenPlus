@@ -14,4 +14,11 @@ async function listPlanInfo(id, token) {
   return response.data;
 }
 
-export { listPlans, listPlanInfo };
+async function planSubscribe(body, token) {
+  const config = createConfig(token);
+
+  const response = await app.post(`/subscriptions`, body, config);
+  return response.data;
+}
+
+export { listPlans, listPlanInfo, planSubscribe };

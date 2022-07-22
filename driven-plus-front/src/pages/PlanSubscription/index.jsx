@@ -14,6 +14,7 @@ function PlanSubscription() {
   const { id } = useParams();
   const [isSubmitting, setSubmitting] = useState(false);
   const [isLoading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [plan, setPlan] = useState({});
   const { userData } = useAuth();
 
@@ -32,18 +33,19 @@ function PlanSubscription() {
     }
   }
 
-  async function handlePlanSubscribe(body) {
-    console.log(body);
+  async function openModal() {
+    setIsModalOpen(true);
   }
 
   const formik = useFormik({
     initialValues: {
+      id: id,
       name: "",
       digits: "",
       securityCode: "",
       expireDate: "",
     },
-    onSubmit: (values) => handlePlanSubscribe(values),
+    onSubmit: () => openModal(),
   });
 
   return (
@@ -55,79 +57,88 @@ function PlanSubscription() {
 
       <Components.PageTitle>{plan.name}</Components.PageTitle>
       {!isLoading && (
-        <InfoContainer>
-          <ListTitle>
-            <IconContext.Provider
-              value={{
-                color: "#FF4791",
-                size: "1.5em",
-              }}
-            >
-              <TbClipboardList /> <span>Benefícios:</span>
-            </IconContext.Provider>
-          </ListTitle>
-          <PerkList>
-            {plan.perks.map((perk) => {
-              return <li key={perk.id}>{perk.title}</li>;
-            })}
-          </PerkList>
-          <ListTitle>
-            <IconContext.Provider
-              value={{
-                color: "#FF4791",
-                size: "1.5em",
-              }}
-            >
-              <FaMoneyBillWave /> <span>Preço:</span>
-            </IconContext.Provider>
-          </ListTitle>
-          <PriceContainer>
-            R$ {plan.price.replace(".", ",")} cobrados mensalmente
-          </PriceContainer>
-        </InfoContainer>
+        <>
+          <Components.SubscriptionModal
+            isOpen={isModalOpen}
+            plan={plan}
+            setIsOpen={setIsModalOpen}
+            values={formik.values}
+          />
+          <InfoContainer>
+            <ListTitle>
+              <IconContext.Provider
+                value={{
+                  color: "#FF4791",
+                  size: "1.5em",
+                }}
+              >
+                <TbClipboardList /> <span>Benefícios:</span>
+              </IconContext.Provider>
+            </ListTitle>
+            <PerkList>
+              {plan.perks.map((perk) => {
+                return <li key={perk.id}>{perk.title}</li>;
+              })}
+            </PerkList>
+            <ListTitle>
+              <IconContext.Provider
+                value={{
+                  color: "#FF4791",
+                  size: "1.5em",
+                }}
+              >
+                <FaMoneyBillWave /> <span>Preço:</span>
+              </IconContext.Provider>
+            </ListTitle>
+            <PriceContainer>
+              R$ {plan.price.replace(".", ",")} cobrados mensalmente
+            </PriceContainer>
+          </InfoContainer>
+
+          <Components.FormContainer
+            formik={formik}
+            buttonText={"Assinar"}
+            isSubmitting={isSubmitting}
+          >
+            <Components.FormInput
+              name={"name"}
+              type={"text"}
+              placeholder={"Nome impresso no cartão"}
+              handleChange={formik.handleChange}
+              value={formik.values.name}
+              disabled={isSubmitting}
+            />
+            <Components.FormInput
+              name={"digits"}
+              type={"text"}
+              placeholder={"Digitos do cartão"}
+              handleChange={formik.handleChange}
+              value={formik.values.digits}
+              disabled={isSubmitting}
+            />
+            <Components.FormInput
+              name={"securityCode"}
+              type={"text"}
+              placeholder={"Código de Segurança"}
+              handleChange={formik.handleChange}
+              value={formik.values.securityCode}
+              disabled={isSubmitting}
+              size="half"
+              align="start"
+            />
+            <Components.FormInput
+              name={"expireDate"}
+              type={"text"}
+              placeholder={"Validade"}
+              handleChange={formik.handleChange}
+              value={formik.values.expireDate}
+              disabled={isSubmitting}
+              size="half"
+              align="end"
+            />
+          </Components.FormContainer>
+        </>
       )}
-      <Components.FormContainer
-        formik={formik}
-        buttonText={"Assinar"}
-        isSubmitting={isSubmitting}
-      >
-        <Components.FormInput
-          name={"name"}
-          type={"text"}
-          placeholder={"Nome impresso no cartão"}
-          handleChange={formik.handleChange}
-          value={formik.values.name}
-          disabled={isSubmitting}
-        />
-        <Components.FormInput
-          name={"digits"}
-          type={"text"}
-          placeholder={"Digitos do cartão"}
-          handleChange={formik.handleChange}
-          value={formik.values.digits}
-          disabled={isSubmitting}
-        />
-        <Components.FormInput
-          name={"securityCode"}
-          type={"text"}
-          placeholder={"Código de Segurança"}
-          handleChange={formik.handleChange}
-          value={formik.values.securityCode}
-          disabled={isSubmitting}
-          size="half"
-          align="start"
-        />
-        <Components.FormInput
-          name={"expireDate"}
-          type={"text"}
-          placeholder={"Validade"}
-          handleChange={formik.handleChange}
-          value={formik.values.expireDate}
-          disabled={isSubmitting}
-          size="half"
-          align="end"
-        />
-      </Components.FormContainer>
     </Components.Background>
   );
 }
