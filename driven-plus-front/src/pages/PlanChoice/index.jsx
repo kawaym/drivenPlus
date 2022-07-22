@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import * as Components from "../../components";
@@ -7,7 +6,6 @@ import * as planApi from "../../services/api/plan";
 import useAuth from "../../hooks/Auth";
 
 function PlanChoice() {
-  const navigate = useNavigate();
   const [isLoading, setLoading] = useState(true);
   const [plans, setPlans] = useState({});
   const { userData } = useAuth();
@@ -28,31 +26,18 @@ function PlanChoice() {
   }
   return (
     <Components.Background>
-      <PageTitle>Escolha seu Plano</PageTitle>
+      <Components.PageTitle>Escolha seu Plano</Components.PageTitle>
       {isLoading && <div>Carregando...</div>}
       {!isLoading && (
         <PlansContainer>
           {plans.map((plan) => {
-            console.log(plan);
-            return <Components.PlanCard plan={plan} />;
+            return <Components.PlanCard plan={plan} key={plan.id} />;
           })}
         </PlansContainer>
       )}
     </Components.Background>
   );
 }
-
-const PageTitle = styled.h1`
-  margin-bottom: 50px;
-
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 38px;
-
-  color: ${(props) => props.theme.misc.white};
-`;
 
 const PlansContainer = styled.div`
   width: 80%;
