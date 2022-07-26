@@ -8,6 +8,7 @@ import Header from "./Header";
 import BackButton from "./BackButton";
 import PageTitle from "./PageTitle";
 import SubscriptionModal from "./SubscriptionModal";
+import MainButton from "./MainButton";
 
 export {
   Background,
@@ -20,4 +21,5 @@ export {
   BackButton,
   PageTitle,
   SubscriptionModal,
+  MainButton,
 };

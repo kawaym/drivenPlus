@@ -31,7 +31,11 @@ function PlanChoice() {
       {!isLoading && (
         <PlansContainer>
           {plans.map((plan) => {
-            return <Components.PlanCard plan={plan} key={plan.id} />;
+            return userData.membership && userData.membership.id === plan.id ? (
+              ""
+            ) : (
+              <Components.PlanCard plan={plan} key={plan.id} />
+            );
           })}
         </PlansContainer>
       )}

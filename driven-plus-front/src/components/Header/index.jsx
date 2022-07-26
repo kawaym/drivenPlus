@@ -13,7 +13,7 @@ const Container = styled.header`
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 export default Header;

@@ -8,7 +8,7 @@ import useAuth from "../../hooks/Auth";
 function SubscriptionModal({ isOpen, setIsOpen, plan, values }) {
   ReactModal.setAppElement("#root");
 
-  const { userData } = useAuth();
+  const { userData, addPlan } = useAuth();
   const navigate = useNavigate();
 
   const resetModal = {
@@ -38,6 +38,7 @@ function SubscriptionModal({ isOpen, setIsOpen, plan, values }) {
     try {
       const data = await planApi.planSubscribe(serverData, userData.token);
       console.log(data);
+      addPlan(data.membership);
       navigate("/home");
     } catch (e) {
       console.log(e);

@@ -13,6 +13,8 @@ const StyledTitle = styled.h1`
   font-size: 32px;
   line-height: 38px;
 
+  text-align: center;
+
   color: ${(props) => props.theme.misc.white};
 `;
 

@@ -35,6 +35,7 @@ function App() {
                 element={<Pages.PlanSubscription />}
                 exact
               />
+              <Route path="/home" element={<Pages.Home />} exact />
             </Routes>
           </BrowserRouter>
         </Providers.AuthProvider>

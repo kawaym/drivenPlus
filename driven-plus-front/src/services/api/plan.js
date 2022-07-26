@@ -21,4 +21,11 @@ async function planSubscribe(body, token) {
   return response.data;
 }
 
-export { listPlans, listPlanInfo, planSubscribe };
+async function planUnsubscribe(token) {
+  const config = createConfig(token);
+
+  const response = await app.delete(`/subscriptions`, config);
+  return response.data;
+}
+
+export { listPlans, listPlanInfo, planSubscribe, planUnsubscribe };

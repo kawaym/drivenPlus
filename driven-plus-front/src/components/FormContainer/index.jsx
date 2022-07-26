@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import * as Components from "../index";
+
 function FormContainer({
   children,
   formik,
@@ -11,9 +13,9 @@ function FormContainer({
   return (
     <Form onSubmit={formik.handleSubmit}>
       {children}
-      <SubmitButton type="submit" disabled={isSubmitting}>
+      <Components.MainButton type="submit" disabled={isSubmitting}>
         {buttonText}
-      </SubmitButton>
+      </Components.MainButton>
       {redirectButton !== "" && (
         <RedirectButton
           type="button"
@@ -36,27 +38,6 @@ const Form = styled.form`
   justify-content: space-between;
 
   gap: 15px;
-`;
-
-const SubmitButton = styled.button`
-  width: 100%;
-  height: 52px;
-
-  margin-top: 6px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 8px;
-  background-color: ${(props) => props.theme.button.main};
-
-  color: ${(props) => props.theme.misc.white};
-  font-family: ${(props) => props.theme.font.typography};
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
 `;
 
 const RedirectButton = styled.button`
