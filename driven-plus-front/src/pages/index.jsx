@@ -6,4 +6,15 @@ import PlanSubscription from "./PlanSubscription";
 
 import Home from "./Home";
 
-export { SignIn, SignUp, PlanChoice, PlanSubscription, Home };
+import UserView from "./UserView";
+import UserUpdate from "./UserUpdate";
+
+export {
+  SignIn,
+  SignUp,
+  PlanChoice,
+  PlanSubscription,
+  Home,
+  UserView,
+  UserUpdate,
+};

@@ -11,6 +11,11 @@ export function AuthProvider({ children }) {
     localStorage.setItem("auth", JSON.stringify(userData));
   }
 
+  function logoff() {
+    setUserData({});
+    localStorage.removeItem("auth");
+  }
+
   function addPlan(membership) {
     const userData = JSON.parse(localStorage.getItem("auth"));
     userData.membership = membership;
@@ -26,7 +31,9 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={{ userData, login, removePlan, addPlan }}>
+    <AuthContext.Provider
+      value={{ userData, login, logoff, removePlan, addPlan }}
+    >
       {children}
     </AuthContext.Provider>
   );
