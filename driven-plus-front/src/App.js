@@ -36,6 +36,12 @@ function App() {
                 exact
               />
               <Route path="/home" element={<Pages.Home />} exact />
+              <Route path="/users/:id" element={<Pages.UserView />} exact />
+              <Route
+                path="/users/:id/update"
+                element={<Pages.UserUpdate />}
+                exact
+              />
             </Routes>
           </BrowserRouter>
         </Providers.AuthProvider>

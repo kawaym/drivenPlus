@@ -23,14 +23,14 @@ function Home() {
     }
   }
 
-  console.log(userData);
-
   return (
     <Components.Background>
       <Components.Header>
         <Components.PlanLogo src={userData.membership.image} />
         <IconContext.Provider value={{ size: "2.3em", color: "white" }}>
-          <FaUserCircle />
+          <Link to={`/users/${userData.id}`}>
+            <FaUserCircle />
+          </Link>
         </IconContext.Provider>
       </Components.Header>
       <PageContainer>

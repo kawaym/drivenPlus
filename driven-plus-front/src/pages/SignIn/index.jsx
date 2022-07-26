@@ -22,9 +22,12 @@ function SignIn() {
     try {
       const data = await authApi.signIn(body);
       const userData = {
+        id: data.id,
         token: data.token,
         name: data.name,
         membership: data.membership,
+        email: data.email,
+        cpf: data.cpf,
       };
       login(userData);
       if (!data.membership) {
